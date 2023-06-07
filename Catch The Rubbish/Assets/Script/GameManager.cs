@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     void SpawnRubbish()
     {
-        float tempPos = Random.Range(-6f, 6f);
+        float tempPos = Random.Range(-2f, 2f);
         Instantiate(Rubbish_Prefab, new Vector3(tempPos, 5.5f, 0), Quaternion.identity);
     }
 

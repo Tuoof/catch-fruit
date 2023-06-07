@@ -35,7 +35,7 @@ public class PlayerScript : MonoBehaviour
         }
 
         float currentXPos = transform.position.x;
-        currentXPos = Mathf.Clamp(currentXPos, -6f, 6f);
+        currentXPos = Mathf.Clamp(currentXPos, -2f, 2f);
         transform.position = new Vector3(currentXPos, transform.position.y, transform.position.z);
     }
 }
