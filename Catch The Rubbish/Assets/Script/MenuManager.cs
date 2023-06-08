@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-    public GameObject gameManager,startMenu;
+    public GameObject startMenu;
+    public Text score;
 
     // Start is called before the first frame update
     void Start()
@@ -18,14 +21,15 @@ public class MenuManager : MonoBehaviour
         
     }
 
-    public void StartButton()
+    public void RestartButton()
     {
         startMenu.SetActive(false);
-        gameManager.SetActive(true);
+
+        SceneManager.LoadScene("Level1");
     }
 
     public void ExitButton()
     {
-        Application.Quit();
+        SceneManager.LoadScene("MainMenu");
     }
 }

@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject Rubbish_Prefab;
     public PlayerScript playerScript;
-    public Text score;
+    public MenuManager menuManager;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score.text = playerScript.score.ToString();
+        menuManager.score.text = playerScript.score.ToString();
     }
 
     void SpawnRubbish()
@@ -30,5 +30,6 @@ public class GameManager : MonoBehaviour
     public void StopSpawning()
     {
         CancelInvoke();
+        gameObject.SetActive(false);
     }
 }
