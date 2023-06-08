@@ -8,7 +8,6 @@ public class GroundScript : MonoBehaviour
 
     public GameManager gameManager;
     public GameObject health1, health2, health3;
-    public GameObject gameOverPanel;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -34,7 +33,6 @@ public class GroundScript : MonoBehaviour
                 health1.SetActive(false);
                 health2.SetActive(false);
                 health3.SetActive(false);
-                gameOverPanel.SetActive(true);
                 break;
             case 1:
                 health1.SetActive(true);
@@ -50,19 +48,17 @@ public class GroundScript : MonoBehaviour
                 health1.SetActive(true);
                 health2.SetActive(true);
                 health3.SetActive(true);
-                gameOverPanel.SetActive(false);
                 break;
             default:
                 health1.SetActive(false);
                 health2.SetActive(false);
                 health3.SetActive(false);
-                gameOverPanel.SetActive(true);
                 break;
         }
 
         if (endGame <= 0)
         {
-            gameManager.StopSpawning();
+            gameManager.StopSpawning(false);
         }
     }
 }

@@ -28,28 +28,30 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveLeft();
-        MoveRight();
-    }
-
-    void MoveLeft()
-    {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Translate(new Vector3(1, 0, 0) * -speed * Time.deltaTime);
+            MoveLeft(); 
         }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            MoveRight();
+        }
+    }
+
+    public void MoveLeft()
+    {
+        
+        transform.Translate(new Vector3(1, 0, 0) * -speed * Time.deltaTime);
 
         float currentXPos = transform.position.x;
         currentXPos = Mathf.Clamp(currentXPos, -2f, 2f);
         transform.position = new Vector3(currentXPos, transform.position.y, transform.position.z);
     }
 
-    void MoveRight()
+    public void MoveRight()
     {
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Translate(new Vector3(1, 0, 0) * speed * Time.deltaTime);
-        }
+        transform.Translate(new Vector3(1, 0, 0) * speed * Time.deltaTime);
 
         float currentXPos = transform.position.x;
         currentXPos = Mathf.Clamp(currentXPos, -2f, 2f);

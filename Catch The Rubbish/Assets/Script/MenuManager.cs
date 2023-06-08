@@ -9,6 +9,9 @@ public class MenuManager : MonoBehaviour
     public GameObject startMenu;
     public Text score;
 
+    public Text levelSelect;
+    string LevelSelectString;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +24,16 @@ public class MenuManager : MonoBehaviour
         
     }
 
+    public void SetLevelSelect(string sceneName, string buttonText)
+    {
+        levelSelect.text = buttonText;
+        LevelSelectString = sceneName;
+    }
+
     public void RestartButton()
     {
         startMenu.SetActive(false);
-
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene(LevelSelectString);
     }
 
     public void ExitButton()
