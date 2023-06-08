@@ -5,20 +5,30 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject Rubbish_Prefab;
+    [Header("References")]
+    public TrashSpawner Rubbish_Prefab;
     public GameObject gameOverPanel;
     public PlayerScript playerScript;
     public MenuManager menuManager;
-    public GameObject button1, button2;
-
     public Text WinText;
 
+    [Header("Game Button")]
+    public GameObject button1;
+    public GameObject button2;
+
+    [Header("String Win State")]
     public string WinString;
     public string LoseString;
 
-    public string NextLevelScene, buttonTextWin;
-    public string CurrentLevelScene, buttonTextLose;
+    [Header("Scene References")]
+    public string NextLevelScene;
+    public string CurrentLevelScene;
 
+    [Header("Botton Text State")]
+    public string buttonTextWin;
+    public string buttonTextLose;
+
+    [Header("Timer Level")]
     [SerializeField]
         bool timerIsRunning = true;
     [SerializeField]
@@ -29,7 +39,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnRubbish", 2, 2);
+        InvokeRepeating("SpawnRubbish", 1, 1);
     }
 
     // Update is called once per frame
@@ -57,7 +67,7 @@ public class GameManager : MonoBehaviour
     void SpawnRubbish()
     {
         float tempPos = Random.Range(-2f, 2f);
-        Instantiate(Rubbish_Prefab, new Vector3(tempPos, 5.5f, 0), Quaternion.identity);
+        Rubbish_Prefab.SpawnRandom(new Vector3(tempPos, 5.5f, 0), Quaternion.identity);
     }
 
     public void StopSpawning(bool win)
