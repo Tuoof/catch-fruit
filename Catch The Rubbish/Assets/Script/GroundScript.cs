@@ -12,17 +12,6 @@ public class GroundScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        DestroyCollision(collision);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    public void DestroyCollision(Collider2D collision)
-    {
         if (collision.CompareTag(RightTag))
         {
             endGame -= 1;
@@ -32,6 +21,21 @@ public class GroundScript : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+        //DestroyCollision(collision);
+    }
+
+        
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    public void DestroyCollision(Collider2D collision)
+    {
+        endGame -= 1;
+        Destroy(collision.gameObject);
     }
 
     // Update is called once per frame

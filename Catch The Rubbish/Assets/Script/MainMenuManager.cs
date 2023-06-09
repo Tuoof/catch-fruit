@@ -10,6 +10,8 @@ public class MainMenuManager : MonoBehaviour
     public GameObject LevelPanel;
     public GameObject SettingPanel;
     public GameObject CreditPanel;
+    public GameObject ExitConfirm;
+    public GameObject HelpPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -29,18 +31,21 @@ public class MainMenuManager : MonoBehaviour
         LevelPanel.SetActive(false);
         SettingPanel.SetActive(false);
         CreditPanel.SetActive(false);
+        ExitConfirm.SetActive(false);
     }
 
     public void ShowLevelPanel()
     {
         LevelPanel.SetActive(true);
         MainPanel.SetActive(false);
+        HelpPanel.SetActive(false);
     }
 
     public void ShowSettingPanel()
     {
         SettingPanel.SetActive(true);
         MainPanel.SetActive(false);
+        CreditPanel.SetActive(false);
     }
 
     public void ShowCreditPanel()
@@ -50,7 +55,25 @@ public class MainMenuManager : MonoBehaviour
         MainPanel.SetActive(false);
     }
 
-    public void ExitButton()
+    public void ShowExitPanel()
+    {
+        CreditPanel.SetActive(false);
+        SettingPanel.SetActive(false);
+        MainPanel.SetActive(false);
+        ExitConfirm.SetActive(true);
+    }
+
+    public void ShowHelpPanel()
+    {
+        CreditPanel.SetActive(false);
+        LevelPanel.SetActive(false);
+        SettingPanel.SetActive(false);
+        MainPanel.SetActive(false);
+        ExitConfirm.SetActive(false);
+        HelpPanel.SetActive(true);
+    }
+
+    public void YesExit()
     {
         Application.Quit();
     }
@@ -69,14 +92,5 @@ public class MainMenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("Level3");
     }
-
-    public void Level4()
-    {
-        SceneManager.LoadScene("Level4");
-    }
-
-    public void Level5()
-    {
-        SceneManager.LoadScene("Level5");
-    }
 }
+
