@@ -5,23 +5,37 @@ using UnityEngine;
 public class GroundScript : MonoBehaviour
 {
     private int endGame = 3;
+    public string RightTag;
 
     public GameManager gameManager;
     public GameObject health1, health2, health3;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Rubbish")
+        if (collision.CompareTag(RightTag))
         {
             endGame -= 1;
             Destroy(collision.gameObject);
         }
+        else
+        {
+            Destroy(collision.gameObject);
+        }
+        //DestroyCollision(collision);
     }
 
+        
+    
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    public void DestroyCollision(Collider2D collision)
+    {
+        endGame -= 1;
+        Destroy(collision.gameObject);
     }
 
     // Update is called once per frame

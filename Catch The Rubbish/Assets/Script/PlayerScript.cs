@@ -9,17 +9,25 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     int speed;
     public int score = 0;
+           
 
     public Button MoveLeftButton, MoveRightButton;
+    public GroundScript ground;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Rubbish")
+        if(collision.CompareTag(ground.RightTag))
         {
             score += 1;
             Destroy(collision.gameObject);
         }
+        else
+        {
+            
+            ground.DestroyCollision(collision);
+        }
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,4 +65,6 @@ public class PlayerScript : MonoBehaviour
         currentXPos = Mathf.Clamp(currentXPos, -2f, 2f);
         transform.position = new Vector3(currentXPos, transform.position.y, transform.position.z);
     }
+
+    
 }
